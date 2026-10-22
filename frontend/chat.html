@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多功能网站 · 在线聊天</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/anime.css?v=1">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">多功能<span>网站</span></div>
+    <nav class="nav" id="nav">
+      <a href="/index.html">首页</a>
+      <a href="/blog.html">博客</a>
+      <a href="/files.html">文件共享</a>
+      <a href="/chat.html">在线聊天</a>
+      <a href="/canvas.html">共享画布</a>
+      <a href="/workspace.html">协作台</a>
+      <a href="/search.html">全站搜索</a>
+    </nav>
+    <div class="status"><span class="dot" id="net-dot"></span><span id="net-text">未连接</span></div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-head">
+      <h1>在线聊天</h1>
+      <p>多房间实时广播。打开两个窗口进入同一房间即可验证；连接断开会自动重连。</p>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <div style="flex:1; min-width:170px">
+          <label>你的身份</label>
+          <div class="identity-chip" id="whoami">读取中…</div>
+        </div>
+        <div style="flex:1; min-width:170px">
+          <label for="room">房间</label>
+          <input id="room" type="text" maxlength="64" placeholder="房间名">
+        </div>
+        <div style="align-self:flex-end; padding-bottom:2px">
+          <button id="connect">进入房间</button>
+        </div>
+        <div style="align-self:flex-end; padding-bottom:2px">
+          <button class="ghost" id="disconnect" disabled>离开</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="chat-shell">
+      <section class="card" style="margin:0">
+        <div class="toolbar" style="justify-content:space-between; margin-bottom:12px">
+          <h2 style="margin:0">消息 <span class="hint" id="room-label"></span></h2>
+          <div class="toolbar">
+            <button class="ghost small" id="share-room" type="button">复制房间链接</button>
+            <button class="ghost small" id="export-chat" type="button">导出记录</button>
+          </div>
+        </div>
+        <div class="chat-log" id="log"></div>
+        <form class="row" id="say" style="margin-top:12px">
+          <input id="text" type="text" maxlength="4000" placeholder="输入消息后回车发送（未连接时不可发送）" autocomplete="off" disabled>
+          <button type="submit" id="send" disabled>发送</button>
+        </form>
+        <p class="field-note" id="char-count">0 / 4000</p>
+      </section>
+
+      <aside class="card" style="margin:0">
+        <h2>在线成员 <span class="hint" id="online-count"></span></h2>
+        <ul class="users" id="users"><li class="empty">未连接</li></ul>
+      </aside>
+    </div>
+  </main>
+
+  <script type="module" src="/js/chat.js"></script>
+</body>
+</html>

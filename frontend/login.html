@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 本页与脚本禁止缓存：避免旧页面配新接口导致跳转死循环 -->
+  <meta http-equiv="Cache-Control" content="no-store">
+  <title>输入昵称 · 多功能网站</title>
+  <link rel="stylesheet" href="/css/style.css?v=6">
+  <link rel="stylesheet" href="/css/anime.css?v=1">
+  <style>
+    .login-wrap {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .login-card {
+      width: 100%; max-width: 380px; background: #fff; border: 1px solid var(--line);
+      border-radius: 16px; box-shadow: 0 12px 40px rgba(16, 24, 43, .12); padding: 28px;
+    }
+    .login-card h1 { margin: 0 0 6px; font-size: 21px; }
+    .login-card p.sub { margin: 0 0 18px; color: var(--ink-soft); font-size: 13.5px; }
+    .login-card button { width: 100%; margin-top: 16px; padding: 11px; }
+    .err { color: var(--danger); font-size: 13.5px; min-height: 20px; margin-top: 10px; }
+    .brand-big { font-size: 18px; font-weight: 700; margin-bottom: 14px; }
+    .brand-big span { color: var(--brand); }
+    .note { font-size: 12.5px; color: var(--ink-soft); margin-top: 14px; line-height: 1.5; }
+  </style>
+</head>
+<body data-petals="on">
+  <div class="login-wrap">
+    <form class="login-card" id="form" autocomplete="off">
+      <div class="brand-big">多功能<span>网站</span></div>
+      <h1>你叫什么名字？</h1>
+      <p class="sub">这个名字会跟着你走遍全站——聊天、画布、任务、投票、发文、传文件，都不用再填一次。</p>
+
+      <label for="username">昵称</label>
+      <input id="username" type="text" maxlength="24" placeholder="例如：小林"
+             autofocus required>
+
+      <button type="submit" id="submit">进入网站</button>
+      <div class="err" id="err"></div>
+      <p class="note">本站不做账号核验，昵称仅用于区分「谁说的、谁做的」。随时可以在右上角换一个名字。</p>
+      <p class="note" style="opacity:.65">页面版本 v6 · 如果你看到的是「输入访问口令」，说明浏览器用了旧缓存，请按 Ctrl+F5 强制刷新。</p>
+    </form>
+  </div>
+
+  <script type="module" src="/js/decor.js"></script>
+  <script type="module" src="/js/login.js?v=6"></script>
+</body>
+</html>

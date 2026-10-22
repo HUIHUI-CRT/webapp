@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>小组协作台 · 多功能网站</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/anime.css?v=1">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">多功能<span>网站</span></div>
+    <nav class="nav" id="nav">
+      <a href="/index.html">首页</a><a href="/blog.html">博客</a><a href="/files.html">文件共享</a>
+      <a href="/chat.html">在线聊天</a><a href="/canvas.html">共享画布</a>
+      <a href="/workspace.html">协作台</a><a href="/search.html">全站搜索</a>
+    </nav>
+    <div class="status"><span class="dot" id="net-dot"></span><span id="net-text">就绪</span></div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-head">
+      <h1>小组协作台</h1>
+      <p>把任务分工和小组决策集中在一起。任务和投票会保存在本机数据库中。</p>
+    </section>
+
+    <section class="card member-bar">
+      <div>
+        <label>你的身份</label>
+        <div class="identity-chip" id="whoami">读取中…</div>
+      </div>
+      <p class="field-note">身份来自进入网站时登记的昵称，任务发起人、投票人都自动使用它，不用再填一次。</p>
+    </section>
+
+    <section class="card">
+      <h2>新建任务</h2>
+      <form id="task-form" class="task-form">
+        <div class="task-main-fields">
+          <label for="task-title">任务名称</label>
+          <input id="task-title" type="text" maxlength="160" placeholder="例如：整理答辩演示文稿" required>
+          <label for="task-description">说明</label>
+          <textarea id="task-description" maxlength="4000" placeholder="补充任务要求、交付物或备注"></textarea>
+        </div>
+        <div class="task-side-fields">
+          <label for="task-assignee">负责人</label>
+          <input id="task-assignee" type="text" maxlength="64" placeholder="可暂时留空">
+          <label for="task-due">截止日期</label>
+          <input id="task-due" type="date">
+          <label for="task-priority">优先级</label>
+          <select id="task-priority"><option value="medium">普通</option><option value="high">高</option><option value="low">低</option></select>
+          <button type="submit" id="task-submit" style="margin-top:16px">添加任务</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="tasks" class="kanban" aria-label="任务看板">
+      <section class="kanban-column"><h2>待办 <span class="tag" id="todo-count">0</span></h2><div id="tasks-todo" class="task-list"></div></section>
+      <section class="kanban-column"><h2>进行中 <span class="tag" id="doing-count">0</span></h2><div id="tasks-doing" class="task-list"></div></section>
+      <section class="kanban-column"><h2>已完成 <span class="tag" id="done-count">0</span></h2><div id="tasks-done" class="task-list"></div></section>
+    </section>
+
+    <section class="grid two workspace-bottom">
+      <section class="card">
+        <h2>发起投票</h2>
+        <form id="poll-form">
+          <label for="poll-title">投票主题</label>
+          <input id="poll-title" type="text" maxlength="200" placeholder="例如：选择演示主题" required>
+          <label for="poll-options">选项 <span class="hint">每行一个，至少两项</span></label>
+          <textarea id="poll-options" rows="5" placeholder="方案 A&#10;方案 B" required></textarea>
+          <label for="poll-ends">截止时间 <span class="hint">可选</span></label>
+          <input id="poll-ends" type="datetime-local">
+          <div class="row end" style="margin-top:14px"><button type="submit" id="poll-submit">发布投票</button></div>
+        </form>
+      </section>
+      <section class="card">
+        <h2>小组投票</h2>
+        <div id="polls"><p class="empty">加载中…</p></div>
+      </section>
+    </section>
+
+    <dialog id="task-editor" class="task-dialog">
+      <form id="task-edit-form">
+        <h2>编辑任务</h2>
+        <input id="edit-task-id" type="hidden">
+        <label for="edit-task-title">任务名称</label>
+        <input id="edit-task-title" type="text" maxlength="160" required>
+        <label for="edit-task-description">说明</label>
+        <textarea id="edit-task-description" maxlength="4000"></textarea>
+        <div class="grid two">
+          <div><label for="edit-task-assignee">负责人</label><input id="edit-task-assignee" type="text" maxlength="64"></div>
+          <div><label for="edit-task-due">截止日期</label><input id="edit-task-due" type="date"></div>
+        </div>
+        <label for="edit-task-priority">优先级</label>
+        <select id="edit-task-priority"><option value="medium">普通</option><option value="high">高</option><option value="low">低</option></select>
+        <div class="row end" style="margin-top:16px">
+          <button class="ghost" type="button" id="cancel-task-edit">取消</button>
+          <button type="submit" id="save-task-edit">保存修改</button>
+        </div>
+      </form>
+    </dialog>
+  </main>
+  <script type="module" src="/js/workspace.js"></script>
+</body>
+</html>

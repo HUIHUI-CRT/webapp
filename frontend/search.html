@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>全站搜索 · 多功能网站</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/anime.css?v=1">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">多功能<span>网站</span></div>
+    <nav class="nav" id="nav">
+      <a href="/index.html">首页</a><a href="/blog.html">博客</a><a href="/files.html">文件共享</a>
+      <a href="/chat.html">在线聊天</a><a href="/canvas.html">共享画布</a>
+      <a href="/workspace.html">协作台</a><a href="/search.html">全站搜索</a>
+    </nav>
+    <div class="status"><span class="dot" id="net-dot"></span><span id="net-text">就绪</span></div>
+  </header>
+  <main class="wrap">
+    <section class="page-head"><h1>全站搜索</h1><p>搜索博客正文、文件名、任务和当前服务进程缓存的聊天记录。</p></section>
+    <section class="card">
+      <form id="search-form" class="row">
+        <input id="query" type="search" maxlength="100" placeholder="输入关键词" aria-label="搜索关键词" required>
+        <button type="submit" id="search-submit">搜索</button>
+      </form>
+      <p class="field-note">聊天记录只保留最近消息，并在服务重启后清空；其他搜索结果保存在数据库中。</p>
+    </section>
+    <section class="card">
+      <h2>搜索结果 <span class="hint" id="result-count"></span></h2>
+      <ul class="list" id="results"><li class="empty">输入关键词开始搜索。</li></ul>
+    </section>
+  </main>
+  <script type="module" src="/js/search.js"></script>
+</body>
+</html>

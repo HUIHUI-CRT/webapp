@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多功能网站 · 博客</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/anime.css?v=1">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">多功能<span>网站</span></div>
+    <nav class="nav" id="nav">
+      <a href="/index.html">首页</a>
+      <a href="/blog.html">博客</a>
+      <a href="/files.html">文件共享</a>
+      <a href="/chat.html">在线聊天</a>
+      <a href="/canvas.html">共享画布</a>
+      <a href="/workspace.html">协作台</a>
+      <a href="/search.html">全站搜索</a>
+    </nav>
+    <div class="status"><span class="dot" id="net-dot"></span><span id="net-text">就绪</span></div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-head">
+      <h1>简易博客</h1>
+      <p>发布文章、按时间倒序浏览、点击标题查看完整正文。</p>
+    </section>
+
+    <div class="grid two">
+      <section class="card">
+        <div class="toolbar" style="justify-content:space-between; margin-bottom:12px">
+          <h2 style="margin:0">文章列表 <span class="hint" id="count"></span></h2>
+          <input id="post-search" type="search" aria-label="搜索文章" placeholder="按标题或正文摘要搜索" style="max-width:300px">
+        </div>
+        <ul class="list" id="posts"><li class="empty">加载中…</li></ul>
+      </section>
+
+      <div>
+        <section class="card">
+          <h2>发布文章</h2>
+          <form id="form">
+            <label for="title">标题</label>
+            <input id="title" type="text" maxlength="200" placeholder="给文章起个标题" required>
+            <label for="content">正文</label>
+            <textarea id="content" placeholder="支持多行纯文本，换行会原样保留" required></textarea>
+            <p class="field-note" id="draft-status" aria-live="polite">草稿仅保存在此设备</p>
+            <div class="row end" style="margin-top:14px">
+              <button class="ghost" type="reset">清空</button>
+              <button type="submit" id="submit">发布</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card" id="detail-card" hidden>
+          <h2>文章详情 <span class="hint" id="detail-time"></span></h2>
+          <h3 id="detail-title" style="margin:0 0 10px"></h3>
+          <pre class="body" id="detail-content"></pre>
+          <div class="row end" style="margin-top:14px">
+            <button class="ghost small" id="close-detail">关闭</button>
+            <button class="danger small" id="delete-post">删除</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/js/blog.js"></script>
+</body>
+</html>

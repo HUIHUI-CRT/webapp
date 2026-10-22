@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多功能网站 · 首页</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/anime.css?v=1">
+</head>
+<body data-petals="on">
+  <header class="topbar">
+    <div class="brand">多功能<span>网站</span></div>
+    <nav class="nav" id="nav">
+      <a href="/index.html">首页</a>
+      <a href="/blog.html">博客</a>
+      <a href="/files.html">文件共享</a>
+      <a href="/chat.html">在线聊天</a>
+      <a href="/canvas.html">共享画布</a>
+      <a href="/workspace.html">协作台</a>
+      <a href="/search.html">全站搜索</a>
+    </nav>
+    <div class="status"><span class="dot" id="net-dot"></span><span id="net-text">检测中…</span></div>
+  </header>
+
+  <main class="wrap">
+    <section class="anime-hero">
+      <span class="badge">小组协作工作台</span>
+      <h1>把博客、文件、聊天、画布和任务<br>都收进同一个空间</h1>
+      <p>本地可部署的一体化 Web 应用：写文章、传文件、开房间聊天、多人同绘，
+        再用任务看板与投票把小组的每件事推进下去。</p>
+    </section>
+
+    <section class="grid tiles">
+      <a class="tile" href="/blog.html">
+        <div class="icon">📝</div>
+        <h3>简易博客</h3>
+        <p>发布文章、倒序浏览列表、查看完整正文。</p>
+      </a>
+      <a class="tile" href="/files.html">
+        <div class="icon">📦</div>
+        <h3>文件共享</h3>
+        <p>流式上传、列表查看、按原始文件名下载。</p>
+      </a>
+      <a class="tile" href="/chat.html">
+        <div class="icon">💬</div>
+        <h3>在线聊天</h3>
+        <p>多房间实时广播，带在线名单与历史补齐。</p>
+      </a>
+      <a class="tile" href="/canvas.html">
+        <div class="icon">🎨</div>
+        <h3>共享画布</h3>
+        <p>多人协作绘制，动作实时同步、房间隔离。</p>
+      </a>
+      <a class="tile" href="/workspace.html">
+        <div class="icon">✅</div>
+        <h3>小组协作台</h3>
+        <p>分配任务、跟踪进度、发起投票，让小组决策更清晰。</p>
+      </a>
+      <a class="tile" href="/search.html">
+        <div class="icon">🔎</div>
+        <h3>全站搜索</h3>
+        <p>跨文章、文件、任务和近期聊天查找关键信息。</p>
+      </a>
+    </section>
+
+    <section class="card">
+      <h2>小组概览</h2>
+      <div class="stats-grid" id="workspace-stats"><div class="stat-card"><span>加载中…</span></div></div>
+    </section>
+
+    <section class="card">
+      <h2>最近活动 <span class="hint">小组动态</span></h2>
+      <ul class="list" id="activity-feed"><li class="empty">加载中…</li></ul>
+    </section>
+
+    <section class="grid two" style="margin-top:18px">
+      <div class="card">
+        <h2>服务状态</h2>
+        <dl class="kv" id="health">
+          <dt>状态</dt><dd>检测中…</dd>
+        </dl>
+        <div class="row" style="margin-top:14px">
+          <button class="ghost small" id="refresh">刷新</button>
+          <button class="ghost small" id="reload-ext">重新加载 C++ 扩展</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>实时房间 <span class="hint">WebSocket 在线情况</span></h2>
+        <ul class="list" id="rooms"><li class="empty">暂无连接</li></ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>接口速查</h2>
+      <ul class="list">
+        <li><span class="grow"><span class="title mono">GET /api/posts</span><div class="meta">文章列表</div></span></li>
+        <li><span class="grow"><span class="title mono">POST /api/posts</span><div class="meta">创建文章</div></span></li>
+        <li><span class="grow"><span class="title mono">GET /api/files</span><div class="meta">文件列表</div></span></li>
+        <li><span class="grow"><span class="title mono">POST /api/upload</span><div class="meta">上传文件（multipart）</div></span></li>
+        <li><span class="grow"><span class="title mono">GET /api/download/{filename}</span><div class="meta">下载文件</div></span></li>
+        <li><span class="grow"><span class="title mono">WS /ws?room=&amp;user=</span><div class="meta">聊天与画布共用端点</div></span></li>
+        <li><span class="grow"><span class="title mono">GET /docs</span><div class="meta">FastAPI 自动接口文档</div></span></li>
+      </ul>
+    </section>
+  </main>
+
+  <script type="module" src="/js/decor.js"></script>
+  <script type="module" src="/js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# 运行期数据与构建产物
+.venv/
+.venv-test/
+.tmp/
+backend/build/
+backend/data/
+backend/uploads/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+fastcore*.pyd
+fastcore*.so
+
+# 本地配置（含访问口令，切勿提交）
+.env
+
+# 隧道工具（体积较大，按需下载，不纳入版本库）
+.tools/cloudflared.exe
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+.DS_Store

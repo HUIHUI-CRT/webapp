@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多功能网站 · 文件共享</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/anime.css?v=1">
+  <style>
+    .drop {
+      border: 2px dashed #c9d6ea; border-radius: 12px; padding: 26px;
+      text-align: center; color: var(--ink-soft); background: #fbfcfe; transition: .15s;
+    }
+    .drop.hot { border-color: var(--brand); background: #eaf1fd; color: var(--brand-dark); }
+    .bar { height: 8px; border-radius: 999px; background: #e6ecf6; overflow: hidden; margin-top: 12px; }
+    .bar > i { display: block; height: 100%; width: 0; background: var(--brand); transition: width .12s; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">多功能<span>网站</span></div>
+    <nav class="nav" id="nav">
+      <a href="/index.html">首页</a>
+      <a href="/blog.html">博客</a>
+      <a href="/files.html">文件共享</a>
+      <a href="/chat.html">在线聊天</a>
+      <a href="/canvas.html">共享画布</a>
+      <a href="/workspace.html">协作台</a>
+      <a href="/search.html">全站搜索</a>
+    </nav>
+    <div class="status"><span class="dot" id="net-dot"></span><span id="net-text">就绪</span></div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-head">
+      <h1>文件共享</h1>
+      <p>流式上传（内存占用与文件大小无关），按原始文件名下载，相同内容自动秒传。</p>
+    </section>
+
+    <section class="card">
+      <h2>上传文件 <span class="hint" id="engine-hint"></span></h2>
+      <div class="drop" id="drop">
+        <p style="margin:0 0 12px">把文件拖到这里，或点击选择</p>
+        <input type="file" id="picker" multiple hidden>
+        <button id="choose">选择文件</button>
+      </div>
+      <div class="bar" id="bar" hidden><i></i></div>
+      <p class="meta mono" id="upload-status"></p>
+    </section>
+
+    <section class="card">
+      <div class="toolbar" style="justify-content:space-between; margin-bottom:12px">
+        <h2 style="margin:0">文件列表 <span class="hint" id="count"></span></h2>
+        <div class="toolbar" style="flex:1; justify-content:flex-end">
+          <input id="file-search" type="search" aria-label="搜索文件" placeholder="搜索文件名" style="max-width:260px">
+          <select id="file-sort" aria-label="文件排序" style="width:auto">
+            <option value="newest">最新上传</option>
+            <option value="name">文件名</option>
+            <option value="size">文件大小</option>
+          </select>
+        </div>
+      </div>
+      <ul class="list" id="files"><li class="empty">加载中…</li></ul>
+    </section>
+  </main>
+
+  <script type="module" src="/js/files.js"></script>
+</body>
+</html>

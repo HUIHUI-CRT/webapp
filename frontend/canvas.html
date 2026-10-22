@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多功能网站 · 共享画布</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/anime.css?v=1">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">多功能<span>网站</span></div>
+    <nav class="nav" id="nav">
+      <a href="/index.html">首页</a>
+      <a href="/blog.html">博客</a>
+      <a href="/files.html">文件共享</a>
+      <a href="/chat.html">在线聊天</a>
+      <a href="/canvas.html">共享画布</a>
+      <a href="/workspace.html">协作台</a>
+      <a href="/search.html">全站搜索</a>
+    </nav>
+    <div class="status"><span class="dot" id="net-dot"></span><span id="net-text">未连接</span></div>
+  </header>
+
+  <main class="wrap wide">
+    <section class="page-head">
+      <h1>共享画布</h1>
+      <p>多人实时协作绘制：按住鼠标（或触屏）拖动即可画线，动作通过 WebSocket 广播到同一房间。</p>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <div style="min-width:150px">
+          <label>你的身份</label>
+          <div class="identity-chip" id="whoami">读取中…</div>
+        </div>
+        <div style="min-width:150px">
+          <label for="room">房间</label>
+          <input id="room" type="text" maxlength="64">
+        </div>
+        <div style="align-self:flex-end; padding-bottom:2px">
+          <button id="connect">进入画布</button>
+        </div>
+        <div style="align-self:flex-end; padding-bottom:2px">
+          <button class="ghost" id="disconnect" disabled>离开</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="canvas-bar">
+        <label style="margin:0">颜色 <input type="color" id="color" value="#2b7de9"></label>
+        <label style="margin:0">粗细 <input type="range" id="width" min="1" max="24" value="3"></label>
+        <span class="tag mono" id="width-label">3 px</span>
+        <span class="spacer"></span>
+        <span class="tag" id="stroke-count">0 笔</span>
+        <button class="ghost small" id="download-board" type="button">下载 PNG</button>
+        <button class="ghost small" id="clear">清空画布</button>
+        <span class="tag mono" id="cursor">–</span>
+      </div>
+      <div class="canvas-holder">
+        <canvas id="board"></canvas>
+      </div>
+      <p class="meta" id="canvas-status" style="margin:12px 0 0">未连接：先点击「进入画布」。</p>
+    </section>
+
+    <section class="card">
+      <h2>房间成员 <span class="hint" id="online-count"></span></h2>
+      <ul class="users" id="users"><li class="empty">未连接</li></ul>
+    </section>
+  </main>
+
+  <script type="module" src="/js/canvas.js"></script>
+</body>
+</html>
